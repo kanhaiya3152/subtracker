@@ -5,14 +5,20 @@ import userRouter from "./routes/user.router.js";
 import authRouter from "./routes/auth.routes.js";
 import subscriptionRouter from "./routes/subscription.router.js";
 import connectToDatabase from "./database/mongodb.js";
+import errorMiddleware from "./middleware/error.middleware.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
-//Middleware
+app.use(express.json()); // allow to handle JSON data in requests
+app.use(express.urlencoded({ extended: false })); // helps to process the form data sent via html forms
+app.use(cookieParser())
 
 app.use('/api/v1/users' , userRouter)
 app.use('/api/v1/subscriptions' , subscriptionRouter)
 app.use('/api/v1/auth' , authRouter)
+
+app.use(errorMiddleware)
 
 app.get('/',(req,res) => {
     res.send("Welcome to the new field "); 
