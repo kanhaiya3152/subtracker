@@ -7,12 +7,14 @@ import subscriptionRouter from "./routes/subscription.router.js";
 import connectToDatabase from "./database/mongodb.js";
 import errorMiddleware from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
+import arcjetMiddleware from "./middleware/arcjet.middleware.js";
 
 const app = express();
 
 app.use(express.json()); // allow to handle JSON data in requests
 app.use(express.urlencoded({ extended: false })); // helps to process the form data sent via html forms
 app.use(cookieParser())
+app.use(arcjetMiddleware)
 
 app.use('/api/v1/users' , userRouter)
 app.use('/api/v1/subscriptions' , subscriptionRouter)
