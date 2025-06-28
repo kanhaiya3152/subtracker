@@ -51,7 +51,7 @@ const subscriptionSchema = new mongoose.Schema({
             message:'Renewal date after the start date',
         }
     },
-    User:{
+    user:{
         type:mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required:true,
