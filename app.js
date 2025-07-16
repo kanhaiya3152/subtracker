@@ -25,7 +25,7 @@ app.use('/api/v1/workflows' , workflowRouter)
 app.use(errorMiddleware)
 
 app.get('/',(req,res) => {
-    res.send("Welcome to the new field "); 
+    res.send("Welcome to my server!"); 
 })
 
 app.listen(PORT,async () => {
